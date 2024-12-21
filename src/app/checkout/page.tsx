@@ -1,5 +1,5 @@
 import Image from "next/image";
-import cheakout from "../assets/checkout.png";
+import cheakout from "../../../public/checkout.png";
 
 export default function CheckoutPage() {
   return (

@@ -17,7 +17,7 @@ export default function ErrorPage() {
           <p className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-center">404 Error</p>
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-4">
             <p className="text-xl sm:text-2xl md:text-3xl text-[20px]">Home  &gt; <span className="text-[#FF9F0D]">404</span>  </p>
-            
+
           </div>
         </div>
       </div>
@@ -43,6 +43,6 @@ export default function ErrorPage() {
           </Link>
         </div>
       </section>
-    </div>
-  );
+    </div>
+  );
 }

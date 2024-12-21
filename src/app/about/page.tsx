@@ -1,23 +1,12 @@
 import Image from "next/image";
-import { IoPlayOutline } from "react-icons/io5";
-
-// import upper from "../aassets/about1.png";
-// import lemon from "../aassets/about2.png";
-// import yogurt from "../aassets/about3.png"
-// import pasta from ".../aassets/about4.png";
-// import third from ".../aassets/about5.png";
-// import student from "/Student.png";
-// import coffee from "/Coffee.png";
-// import person from "/Person.png";
-
-import upper from "../assets/about1.png";
-import lemon from "../assets/about2.png";
-import yogurt from "../assets/about3.png";  
-import pasta from "../assets/about4.png";
-import third from "../assets/about5.png";
-import student from "../assets/Student.png";
-import coffee from "../assets/Coffee.png";
-import person from "../assets/Person (1).png";
+import upper from "../../../public/about1.png";
+import main from "./../../../public/aboutcopy.png";
+import third from "../../../public/about5.png";
+import student from "../../../public/Student.png";
+import coffee from "../../../public/Coffee.png";
+import person from "../../../public/Person.png";
+import Link from "next/link";
+import { CiPlay1 } from "react-icons/ci";
 
 export default function About() {
   return (
@@ -42,10 +31,19 @@ export default function About() {
         </div>
       </div>
 
-      {/* Second Section: Content and Buttons */}
+      {/* Second Section: Content and Links */}
       <section className="text-black body-font bg-white">
         <div className="container mx-auto flex px-5 py-24 items-center justify-center">
-          {/* Left Text (takes 70% width) */}
+          {/* Left Images (takes 30% width) */}
+          <div className="w-full md:w-3/10 flex flex-col space-y-4 mt-10 ">
+            <Image
+              className="object-cover object-center md:w-[669px] md:h-[734px] rounded-lg"  // Responsive width and height
+              alt="hero"
+              src={main}
+              layout="intrinsic"
+            />
+          </div>
+          {/* Right Text (takes 70% width) */}
           <div className="w-full md:w-7/10 flex flex-col items-center md:items-start text-center md:text-left">
             <h1 className="text-sm mb-4 font-medium text-yellow-400 italic">
               About us _____
@@ -61,39 +59,18 @@ export default function About() {
               velit in consequat.
             </p>
             <div className="flex justify-center md:justify-start space-x-4">
-              <button className="inline-flex text-white bg-orange-400 border-0 py-2 px-3 focus:outline-none rounded text-lg">
+              <Link href={"/about/"} className="inline-flex justify-center items-center text-white bg-orange-400 border-0 py-2 px-3 focus:outline-none rounded text-lg">
                 Show More
-              </button>
-              <button className="ml-4 inline-flex text-white border-0 py-2 px-3 focus:outline-none rounded text-lg">
-                <IoPlayOutline className="mr-2 text-white" /> {/* Icon on the left */}
-                Watch video
-              </button>
+              </Link>
+              <Link href={"/"} className="flex justify-center items-center gap-4">
+                <div className="w-[60px] h-[60px] rounded-full bg-[#FF9F0D] flex justify-center items-center">
+                  <CiPlay1 className="h-[24px] w-[24px] text-white  " />
+                </div>
+                <h2 className="font-bold text-base">Watch Video</h2>
+              </Link>
             </div>
           </div>
 
-          {/* Right Images (takes 30% width) */}
-          <div className="w-full md:w-3/10 flex flex-col space-y-4 mt-10 ">
-            <Image
-              className="object-cover object-center w-[200px] h-32 md:h-40 rounded-lg"  // Responsive width and height
-              alt="hero"
-              src={lemon}
-              layout="intrinsic"
-            />
-            <div className="md:flex flex-col mt-10 gap-5  space-x-4">
-              <Image
-                className="object-cover object-center w-[200px] h-32 md:h-40 rounded-lg"
-                alt="image2"
-                src={yogurt}
-                layout="intrinsic"
-              />
-              <Image
-                className="object-cover object-center w-[200px] h-32 md:h-40 rounded-lg"
-                alt="image3"
-                src={pasta}
-                layout="intrinsic"
-              />
-            </div>
-          </div>
         </div>
       </section>
 
@@ -105,7 +82,7 @@ export default function About() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque diam pellentesque bibendum non dui volutpat fringilla bibendum.
           </p>
           <Image
-            className="mb-10 object-cover object-center w-full md:w-3/4 lg:w-2/3 h-[300px] md:h-[400px] rounded-lg" // Responsive width and height
+            className="mb-10 object-cover object-center w-full md:w-3/4 lg:w-2/3 h-[300px] md:h-[400px] 2xl:h-[686px] 2xl:w-[1920px] rounded-lg" // Responsive width and height
             alt="Why Choose Us"
             src={third}
             width={1320}
@@ -113,6 +90,20 @@ export default function About() {
           />
         </div>
       </section>
+
+      {/* Testimonials Section */}
+
+      <section className="px-5 md:px-[135px] py-[120px]">
+            {/* Section Heading */}
+            <div>
+              <h2 className="text-[#FF9F0D] font-great text-[20px] md:text-[32px]">
+                Testimonials
+              </h2>
+              <h2 className="font-bold text-[25px] md:text-[48px]">
+                What our clients are saying
+              </h2>
+            </div>
+          </section>
 
       {/* Fourth Section: Features */}
       <section className="text-black body-font bg-white">

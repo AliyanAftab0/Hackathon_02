@@ -1,10 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
 
-import shef from "../assets/shefHat.png"
-import burgur from "../assets/burgur.png"
-import fork from "../assets/fork.png"
-import slice from "../assets/slice.png"
+import shef from "../../../public/shefHat.png"
+import burgur from "../../../public/burgur.png"
+import fork from "../../../public/fork.png"
+import slice from "../../../public/slice.png"
 
 function Items() {
   return (

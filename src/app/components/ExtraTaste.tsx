@@ -1,95 +1,67 @@
 import React from "react";
 import Image from "next/image";
-import { Great_Vibes } from "next/font/google";
 
-// import extra1 from "../assets/extra1.png";
-// import extra2 from "../assets/extra2.png";
-// import extra3 from "../assets/extra3.png";
-// import extra4 from "../assets/extra4.png";
-// import extra5 from "../assets/extra5.png";
-// import extra6 from "../assets/extra6.png";
- 
-import experience from "../assets/30year.png"
+import extra from "../../../public/c.png";
+
+import experience from "../../../public/30Year.png"
+import { PiCookie, PiHamburger, PiWineBold } from "react-icons/pi";
 const Home = () => {
   return (
     <>
       {/* Left  */}
-      <section className="flex flex-row bg-black px-[135px]">
-      {/* <div className="grid grid-rows-3 grid-cols-4 gap-2 p-4 bg-black">
-      Top row
-      <div className="col-span-2 row-span-1 relative">
-        <Image
-          src={extra1}
-          alt="Tacos"
-          className="object-cover w-full h-full"
-        />
-      </div>
-      <div className="col-span-2 row-span-1 relative">
-        <Image
-          src={extra2}
-          alt="Burger"
-          className="object-cover w-full h-full"
-        />
-      </div>
-
-      Second row
-      <div className="col-span-1 row-span-1 relative">
-        <Image
-          src={extra3}
-          alt="Fried food"
-          className="object-cover w-full h-full"
-        />
-      </div>
-      <div className="col-span-1 row-span-1 relative">
-        <Image
-          src={extra4}
-          alt="Stacked Burger"
-          className="object-cover w-full h-full"
-        />
-      </div>
-      <div className="col-span-2 row-span-1 relative">
-        <Image
-          src={extra6}
-          alt="Burger and Fries"
-          className="object-cover w-full h-full"
-        />
-      </div>
-
-      Third row
-      <div className="col-span-4 row-span-1 relative">
-        <Image
-          src={extra1}
-          alt="Pasta"
-          className="object-cover w-full h-full"
-        />
-      </div>
-    </div> */}
+      <section className="flex flex-row justify-between items-center bg-black py-[120px] px-3 md:px-[240px]">
+        <div>
+          <div className="col-span-2 row-span-1 relative hidden md:flex">
+            <Image
+              src={extra}
+              alt="img"
+              className="object-cover w-[660px] h-full"
+            />
+          </div>
+        </div>
 
         {/* right */}
         <div className="bg-black">
           <div className="mt-[50]">
-            <h3 className="text-[#FF9F0D] text-2xl  mb-[35]">Why Choose us</h3>
-            <h1 className="text-white text-6xl font-bold mb-7">
+            <h3 className="text-[#FF9F0D] text-2xl font-great mb-[35]">Why Choose us</h3>
+            <h1 className="text-white w-[300px] md:w-[557px] text-4xl md:text-6xl font-bold mb-7">
               <span className="text-[#FF9F0D]">Ex</span>tra ordinary taste
-              <br /> And Experienced{" "}
+              And Experienced{" "}
             </h1>
-            <p className="text-gray-200 mb-14 text-xl">
+            <p className="text-gray-200 w-[300px] md:w-[580px] mb-14 text-base md:text-xl">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
               diam
-              <br /> pellentesque bibendum non dui volutpat fringilla bibendum.
-              Urna, elit <br /> augue urna, vitae feugiat pretium donec id
-              elementum. Ultrices mattis <br /> sed vitae mus risus. Lacus nisi,
-              et ac dapibus sit eu velit in <br /> consequat.
+              pellentesque bibendum non dui volutpat fringilla bibendum.
+              Urna, elit augue urna, vitae feugiat pretium donec id
+              elementum. Ultrices mattis sed vitae mus risus. Lacus nisi,
+              et ac dapibus sit eu velit in consequat.
             </p>
 
-            <div className="gap-10 flex mb-5">
-              <section className="bg-yellow-400  text-white p-12">
+            <div className="flex justify-start items-center gap-5 mb-5">
+              <div className="text-center">
+              <div className="bg-[#FF9F0D] text-white p-2 rounded-md">
+                <PiHamburger size={56} />
+              </div>
+              <p className="text-white">
                 Fast Food
-              </section>
-              <section className="bg-yellow-400 text-white p-12">Lunch</section>
-              <section className="bg-yellow-400 text-white p-12">
+              </p>
+              </div>
+              <div className="text-center">
+              <div className="bg-[#FF9F0D] text-white p-2 rounded-md">
+                <PiCookie size={56} />
+              </div>
+              <p className="text-white">
+                Lunch
+              </p>
+              </div>
+              <div className="text-center">
+              <div className="bg-[#FF9F0D] text-white p-2 rounded-md">
+                <PiWineBold size={56} />
+              </div>
+              <p className="text-white">
                 Dinner
-              </section>
+              </p>
+              </div>
             </div>
 
             <Image
@@ -97,7 +69,8 @@ const Home = () => {
               alt="experience"
               width={374}
               height={93}
-            ></Image>
+              className="w-[300px] md:w-[347px] md:h-[93px]"
+            />
           </div>
         </div>
       </section>

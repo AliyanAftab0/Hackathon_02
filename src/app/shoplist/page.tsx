@@ -1,5 +1,3 @@
-
-
 "use client";
 import React from "react";
 import Image from "next/image";
@@ -38,12 +36,12 @@ const Shop = () => {
       {/* Products Section */}
       <section className="products-section">
         <div className="product-card">
-          <Image src="/images/salad.jpg" alt="Salad" width={200} height={200}/>
+          <Image src="/salad.jpg" alt="Salad" width={200} height={200}/>
           <h3>Salad</h3>
           <p>$12</p>
         </div>
         <div className="product-card">
-          <Image src="/images/burger.jpg" alt="Burger" width={200} height={200}/>
+          <Image src="/burger.jpg" alt="Burger" width={200} height={200}/>
           <h3>Burger</h3>
           <p>$15</p>
         </div>
@@ -62,58 +60,6 @@ const Shop = () => {
           </li>
         </ul>
       </aside>
-
-      {/* Styled-JSX for CSS */}
-      <style jsx>{`
-        .shop-container {
-          display: flex;
-          flex-direction: column;
-          padding: 20px;
-        }
-
-        .hero-section {
-          text-align: center;
-          background: url('/images/hero-background.jpg') no-repeat center center/cover;
-          padding: 50px 0;
-          color: white;
-        }
-
-        .hero-section h1 {
-          font-size: 2.5rem;
-        }
-
-        .filter-section {
-          display: flex;
-          justify-content: space-between;
-          margin: 20px 0;
-        }
-
-        .filters label {
-          margin-right: 10px;
-        }
-
-        .products-section {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 20px;
-        }
-
-        .product-card {
-          border: 1px solid #ddd;
-          padding: 10px;
-          text-align: center;
-        }
-
-        .search-sidebar {
-          margin-top: 20px;
-        }
-
-        .search-sidebar input {
-          width: 100%;
-          padding: 8px;
-          margin-bottom: 10px;
-        }
-      `}</style>
     </div>
   );
 };
