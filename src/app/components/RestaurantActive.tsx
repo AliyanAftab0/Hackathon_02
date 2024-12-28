@@ -21,7 +21,7 @@ function RestaurantActive() {
           <h1 className="text-[#FF9F0D] md:text-[32px] font-great text-[20px] font-bold mb-4">
             Restaurant Active Process
           </h1>
-          <h1 className="text-2xl md:text-[48px] font-bold w-[300px] md:w-[705px] mb-4">
+          <h1 className="text-2xl leading-10 md:text-[48px] font-bold w-[300px] md:w-[705px] mb-4">
             <span className="text-[#FF9F0D]">We</span> Document Every Food Bean
             Process until it is saved
           </h1>

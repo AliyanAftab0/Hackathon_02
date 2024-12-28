@@ -8,9 +8,10 @@ import { FaFacebookF, FaPinterestP, FaTwitter } from "react-icons/fa";
 
 function Hero() {
   return (
-    <section className="bg-black px-3 md:px-[135px] flex flex-col justify-evenly md:flex-row  md:items-center py-[50px]">
+    <section className="bg-black px-3 md:px-10 lg:px-[135px] flex flex-col justify-evenly xl:flex-row lg:items-center py-[50px]">
       {/* Heading */}
-      <div className="hidden md:flex flex-col items-center space-y-4 mx-10">
+      <div className="flex items-center">
+      <div className="hidden lg:flex flex-col items-center space-y-4 mx-10">
         <div className="w-px h-[158px] bg-white"></div>
         <Link href="https://facebook.com" target="_blank">
           <FaFacebookF className="text-white hover:text-[#FF9F0D] transition duration-300" size={20} />
@@ -42,6 +43,7 @@ function Hero() {
             See More
           </Link>
         </div>
+      </div>
       </div>
 
       {/* Image */}

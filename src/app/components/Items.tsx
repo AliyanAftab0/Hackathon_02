@@ -23,7 +23,7 @@ function Items() {
   ></div>
 
   {/* Content */}
-  <div className="relative flex md:flex-row flex-col justify-center items-center gap-5 md:gap-[161px]">
+  <div className="relative flex lg:flex-row flex-col justify-center items-center gap-5 md:gap-[161px]">
     <div className="w-[218px] h-[247px] text-white flex flex-col justify-center items-center">
       <Image src={shef} alt="" />
       <h2 className="text-[15px] font-bold mt-[24px]">Professional Chefs</h2>

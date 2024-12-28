@@ -21,7 +21,7 @@ function MeetShef() {
             <span className="text-[#FF9F0D]">Me</span>et Our Chef
           </h1>
         </div>
-        <div className="flex flex-col md:flex-row justify-center items-center gap-[20px] mt-[50px]">
+        <div className="flex flex-col xl:flex-row justify-center items-center gap-[20px] mt-[50px]">
           <Image src={chef1} alt="" className="w-[200px] md:w-[305px] md:h-[400px] cursor-pointer hover:scale-105 transition-all" />
           <Image src={chef2} alt="" className="w-[200px] md:w-[280px] md:h-[400px] cursor-pointer hover:scale-105 transition-all" />
           <Image src={chef3} alt="" className="w-[200px] md:w-[280px] md:h-[400px] cursor-pointer hover:scale-105 transition-all" />

@@ -68,7 +68,7 @@ export default function Navbar() {
   return (
     <nav className="bg-black text-white p-4 w-full">
       <LoadingBar color="#FF9F0D" progress={progress} onLoaderFinished={() => setProgress(0)} />
-      <section className="flex items-center justify-between px-4 md:px-[135px]">
+      <section className="flex items-center justify-between px-4 lg:px-[135px]">
         {/* Logo */}
         <div className="text-2xl font-bold md:hidden">
           <Link href="/" aria-label="Navigate to Home">
@@ -77,7 +77,7 @@ export default function Navbar() {
         </div>
 
         {/* Hamburger Menu */}
-        <div className="flex gap-2 sm:hidden">
+        <div className="flex gap-2 md:hidden">
         <Link href="/cart" aria-label="View cart">
           <IoBagHandle className="w-6 h-6 cursor-pointer" />
         </Link>

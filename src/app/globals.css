@@ -10,6 +10,10 @@
   font-style: normal;
 }
 
+.helvetica {
+  font-family: Helvetica;
+}
+
 .shop-container {
     display: flex;
     flex-direction: column;
@@ -76,7 +80,7 @@
   background-color: #ff9f0d !important; /* Active dot color */
   opacity: 1; /* Fully visible */
 }
-
+  
 @layer base {
   :root {
     --background: 0 0% 100%;

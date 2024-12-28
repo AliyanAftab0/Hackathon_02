@@ -19,26 +19,26 @@ function FoodCategory() {
             <span className="text-[#FF9F0D]">Ch</span>oose Food Iteam
           </h1>
         </div>
-        <div className="flex flex-col md:flex-row justify-center items-center gap-[20px] mt-[50px]">
+        <div className="flex flex-col xl:flex-row justify-center items-center gap-[20px] mt-[50px]">
           <Image
             src={food1}
             alt=""
-            className="w-[200px] md:w-[305px] md:h-[280px] cursor-pointer max-md:hover:scale-105 transition-all"
+            className="w-[200px] md:w-[305px] md:h-[280px] lg:w-[350px] lg:h-[320px] cursor-pointer max-md:hover:scale-105 transition-all"
           />
           <Image
             src={food2}
             alt=""
-            className="w-[200px] md:w-[280px] md:h-[280px] cursor-pointer max-md:hover:scale-105 transition-all"
+            className="w-[200px] md:w-[280px] md:h-[280px] lg:w-[350px] lg:h-[320px] cursor-pointer max-md:hover:scale-105 transition-all"
           />
           <Image
             src={food3}
             alt=""
-            className="w-[200px] md:w-[280px] md:h-[280px] cursor-pointer max-md:hover:scale-105 transition-all"
+            className="w-[200px] md:w-[280px] md:h-[280px] lg:w-[350px] lg:h-[320px] cursor-pointer max-md:hover:scale-105 transition-all"
           />
           <Image
             src={food4}
             alt=""
-            className="w-[200px] md:w-[280px] md:h-[280px] cursor-pointer max-md:hover:scale-105 transition-all"
+            className="w-[200px] md:w-[280px] md:h-[280px] lg:w-[350px] lg:h-[320px] cursor-pointer max-md:hover:scale-105 transition-all"
           />
         </div>
       </section>

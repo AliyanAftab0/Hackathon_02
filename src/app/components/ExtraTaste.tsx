@@ -9,13 +9,13 @@ const Home = () => {
   return (
     <>
       {/* Left  */}
-      <section className="flex flex-row justify-between items-center bg-black py-[120px] px-3 md:px-[240px]">
+      <section className="flex flex-row justify-between space-x-10 items-center bg-black py-[120px] px-3 md:px-[240px]">
         <div>
-          <div className="col-span-2 row-span-1 relative hidden md:flex">
+          <div className="col-span-2 row-span-1 relative hidden lg:flex">
             <Image
               src={extra}
               alt="img"
-              className="object-cover w-[660px] h-full"
+              className="object-cover 2xl:w-[660px] h-full"
             />
           </div>
         </div>
@@ -24,11 +24,11 @@ const Home = () => {
         <div className="bg-black">
           <div className="mt-[50]">
             <h3 className="text-[#FF9F0D] text-2xl font-great mb-[35]">Why Choose us</h3>
-            <h1 className="text-white w-[300px] md:w-[557px] text-4xl md:text-6xl font-bold mb-7">
+            <h1 className="text-white w-[300px] lg:w-[557px] text-4xl lg:text-6xl font-bold mb-7">
               <span className="text-[#FF9F0D]">Ex</span>tra ordinary taste
               And Experienced{" "}
             </h1>
-            <p className="text-gray-200 w-[300px] md:w-[580px] mb-14 text-base md:text-xl">
+            <p className="text-gray-200 w-[300px] lg:w-[580px] mb-14 text-base lg:text-xl">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
               diam
               pellentesque bibendum non dui volutpat fringilla bibendum.

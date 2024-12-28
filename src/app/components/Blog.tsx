@@ -44,7 +44,7 @@ function Blog() {
                 </h1>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 flex-grow mt-[59px]">
+            <div className="grid grid-cols-1 xl:grid-cols-3 flex-grow mt-[59px]">
                 {posts.map((post) => (
                     <div key={post.id} className="w-[330px] md:w-[424px] mb-8 mx-auto">
                         <Image
