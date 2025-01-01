@@ -98,7 +98,7 @@ const ShoppingCart = () => {
           <p className="text-[20px] mt-4"><Link href="/" className="text-[#FF9F0D]">Home</Link>&gt; Shopping cart</p>
         </div>
       </section>
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto md:px-4 py-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Cart Items */}
           <div className="lg:col-span-2">
@@ -116,7 +116,7 @@ const ShoppingCart = () => {
                 {cartItems.map((item) => (
                   <tr key={item.id} className="border-b">
                     <td className="py-4">
-                      <div className="flex items-center space-x-4">
+                      <div className="md:flex flex-col justify-center items-center space-x-4">
                         <Image
                           src={item.image}
                           alt={item.name}
@@ -125,7 +125,7 @@ const ShoppingCart = () => {
                           className="w-20 h-20 object-cover rounded"
                         />
                         <div>
-                          <h3 className="font-medium">{item.name}</h3>
+                          <h3 className="font-medium max-sm:w-10">{item.name}</h3>
                           <StarRating rating={item.rating} />
                         </div>
                       </div>
@@ -149,7 +149,7 @@ const ShoppingCart = () => {
                       </div>
                     </td>
                     <td className="py-4">${(item.price * item.quantity).toFixed(2)}</td>
-                    <td className="py-4">
+                    <td className="py-4 max-sm:pl-8">
                       <button
                         onClick={() => removeItem(item.id)}
                         className="text-gray-400 hover:text-gray-600"

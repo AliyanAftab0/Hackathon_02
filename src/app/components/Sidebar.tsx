@@ -2,14 +2,25 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Search } from 'lucide-react';
-import { products } from "../shoplist/page";
+
+const products = [
+    { id: 1, name: 'Fresh Lime', price: 45.00, category: 'Drinks', image: '/about3 copy.png', width: 312, height: 267 },
+    { id: 2, name: 'Chocolate Muffin', price: 12.00, category: 'Desserts', image: '/about3.1 copy.png', width: 312, height: 267 },
+    { id: 3, name: 'Burger', price: 45.00, category: 'Burger', image: '/maincourse.png', width: 312, height: 267 },
+    { id: 4, name: 'Country Burger', price: 45.00, category: 'Burger', image: '/about3.2 copy.png', width: 312, height: 267 },
+    { id: 5, name: 'Drink', price: 45.00, category: 'Drinks', image: '/drink.png', width: 312, height: 267 },
+    { id: 6, name: 'Pizza', price: 45.00, category: 'Pizza', image: '/about3.3 copy.png', width: 312, height: 267 },
+    { id: 7, name: 'Cheese Butter', price: 45.00, category: 'Sides', image: '/about3.4 copy.png', width: 312, height: 267 },
+    { id: 8, name: 'Sandwiches', price: 45.00, category: 'Sandwiches', image: '/about3.5 copy.png', width: 312, height: 267 },
+    { id: 9, name: 'Chicken Chop', price: 45.00, category: 'Chicken', image: '/about3.6 copy.png', width: 312, height: 267 }
+  ];
 
 const categories = [
     'Sandwiches', 'Burger', 'Chicken Chop', 'Drink', 'Pizza',
     'Th', 'Non Veg', 'Uncategorized'
   ];
 
-const Sidebar = () => {
+const Sidebar = ({ params }: any) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [priceRange, setPriceRange] = useState({ min: 0, max: 100 });
@@ -72,7 +83,7 @@ const Sidebar = () => {
             <div>
                 <h3 className="font-semibold mb-3">Latest Products</h3>
                 <div className="space-y-4">
-                    {products.slice(0, 4).map((product) => (
+                    {products.slice(0, 4).map((product: any) => (
                         <div key={product.id} className="flex space-x-3">
                             <Image
                                 src={product.image}
