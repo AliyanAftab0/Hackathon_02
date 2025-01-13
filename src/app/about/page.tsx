@@ -9,7 +9,7 @@ import coffee from "../../../public/Coffee.png";
 import person from "../../../public/Person.png";
 import Link from "next/link";
 import { CiPlay1 } from "react-icons/ci";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import review1 from "../../../public/Reviewslider1.png";
 import review2 from "../../../public/Reviwslider2.png";
 import review3 from "../../../public/Reviewslider3.png";
@@ -18,7 +18,6 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { useState } from "react";
 
 const testimonials = [
   {
