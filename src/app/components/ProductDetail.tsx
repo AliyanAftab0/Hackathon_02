@@ -1,9 +1,19 @@
 "use client";
 import React, { useState } from 'react';
-import { Star, Share2, Heart, ShoppingCart } from 'lucide-react';
+import { Star } from 'lucide-react';
 import Image from 'next/image';
-import { Product } from '../types';
-import Link from 'next/link';
+
+interface Product {
+  id?: string;
+  name: string;
+  price: number;
+  description: string;
+  image: string;
+  images?: string[];
+  rating?: number;
+  reviews?: number;
+  tags?: string[];
+}
 
 interface ProductDetailProps {
   product: Product;
@@ -42,7 +52,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
           </div>
           {product.images && (
             <div className="grid grid-cols-4 gap-4">
-              {product.images.map((image, index) => (
+              {product.images.map((image: any, index: number) => (
                 <button
                   key={index}
                   onClick={() => setSelectedImage(index)}

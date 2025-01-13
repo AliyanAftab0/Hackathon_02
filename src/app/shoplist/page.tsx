@@ -7,12 +7,11 @@ import { SidebarIcon } from "lucide-react";
 import {
   Sheet,
   SheetContent,
-  SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
 
 
-export const products = [
+const products = [
   { id: 1, name: 'Fresh Lime', price: 45.00, category: 'Drinks', image: '/about3 copy.png', width: 312, height: 267 },
   { id: 2, name: 'Chocolate Muffin', price: 12.00, category: 'Desserts', image: '/about3.1 copy.png', width: 312, height: 267 },
   { id: 3, name: 'Burger', price: 45.00, category: 'Burger', image: '/maincourse.png', width: 312, height: 267 },
@@ -65,8 +64,8 @@ const Shop = () => {
 
             {/* Products Grid */}
             <div className="grid mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.map((product) => (
-                <div key={product.id} className="group">
+              {products.map((product, i) => (
+                <div key={i} className="group">
                   <Link href={"/shopdetails"}>
                   <div className="relative overflow-hidden rounded-lg">
                     <Image
