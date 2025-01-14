@@ -28,7 +28,7 @@ function MeetShef() {
           <Image src={chef4} alt="" className="w-[200px] md:w-[280px] md:h-[400px] cursor-pointer hover:scale-105 transition-all" />
         </div>
       </section>
-      <Link href={"/"} className="border border-[#FF9F0D] flex items-center justify-center w-[120px] h-[40px] md:w-[200px] md:h-[60px] rounded-[30px] text-white mb-5">
+      <Link href={"/chef"} className="border border-[#FF9F0D] flex items-center justify-center w-[120px] h-[40px] md:w-[200px] md:h-[60px] rounded-[30px] text-white mb-5">
         See More
       </Link>
     </div>

@@ -29,7 +29,7 @@ function Hero() {
           Its Quick & Amusing!
         </h1>
 
-        <h1 className="text-2xl md:leading-[3.5rem] md:text-[50px] font-bold md:w-[472px] whitespace-nowrap md:whitespace-normal">
+        <h1 className="text-2xl md:leading-[3.5rem] md:text-[50px] font-bold md:w-[472px] md:whitespace-normal">
           <span className="text-[#FF9F0D]">Th</span>e Art of speed food Quality
         </h1>
 

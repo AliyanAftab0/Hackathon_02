@@ -5,6 +5,7 @@ import Image from "next/image";
 import { AiOutlineLike } from "react-icons/ai";
 import { RiMessage2Line } from "react-icons/ri";
 import { FiShare2 } from "react-icons/fi";
+import Link from "next/link";
 
 function Blog() {
     const posts = [
@@ -57,7 +58,7 @@ function Blog() {
                             <h2 className="text-[#FF9F0D] text-[16px] font-normal mt-[30px] px-[43px]">{post.date}</h2>
                             <h2 className="text-white text-[24px] font-bold px-[43px] mt-[16px]">{post.title}</h2>
                             <div className="text-white flex justify-between px-[43px] my-[32px]">
-                                <h1 className="hover:text-[#FF9F0D] cursor-pointer">Learn More</h1>
+                                <Link href={"/blogdetail"} className="hover:text-[#FF9F0D] cursor-pointer">Learn More</Link>
                                 <div className="flex gap-[8px]">
                                     <AiOutlineLike className="hover:text-[#FF9F0D] cursor-pointer" />
                                     <RiMessage2Line className="hover:text-[#FF9F0D] cursor-pointer" />

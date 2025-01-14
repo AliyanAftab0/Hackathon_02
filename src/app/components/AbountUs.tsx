@@ -18,7 +18,7 @@ function AbountUs() {
           About us
         </h1>
 
-        <h1 className="text-[20px] md:text-[50px] font-bold whitespace-nowrap md:whitespace-normal">
+        <h1 className="text-[20px] md:text-[50px] font-bold  md:whitespace-normal">
           <span className="text-[#FF9F0D]">We</span> Create the best foody
           product
         </h1>
@@ -53,7 +53,7 @@ function AbountUs() {
         </ul>
 
         <div className="flex flex-col md:flex-row items-center mb-10 md:items-start">
-          <Link href={"/"} className="bg-[#FF9F0D] text-white flex items-center justify-center w-[120px] h-[40px] md:w-[190px] md:h-[60px] rounded-[40px] mt-[32px] hover:bg-yellow-800">
+          <Link href={"/about"} className="bg-[#FF9F0D] text-white flex items-center justify-center w-[120px] h-[40px] md:w-[190px] md:h-[60px] rounded-[40px] mt-[32px] hover:bg-yellow-800">
             See More
           </Link>
         </div>
@@ -62,7 +62,7 @@ function AbountUs() {
       {/* Image */}
 
       <div className="flex flex-col justify-center items-center mt-[50px] md:mt-0 ml-0 md:ml-[20px]">
-        <Image src={pic1} alt="Hero Image" className="w-[327px] xl:w-[660px] h-[234px] xl:h-[330px] max-md:hover:scale-105 transition-all rounded-lg" />
+        <Image src={pic1} alt="Hero Image" className="w-[200px] xl:w-[660px] h-[130px] xl:h-[330px] max-md:hover:scale-105 transition-all rounded-lg" />
         <div className="flex flex-col xl:flex-row mt-[16px] lg:mt-[0] px-5 md:px-0">
           <Image src={pic2} alt="Hero Image" className="mr-[16px] pt-[40px] max-md:hover:scale-105 transition-all" />
           <Image src={pic3} alt="Hero Image" className="pt-[40px] max-md:hover:scale-105 transition-all" />

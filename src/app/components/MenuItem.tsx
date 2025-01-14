@@ -40,7 +40,7 @@ const MenuComponent = () => {
           </div>
 
           {/* Right Section: Menu Items */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 flex-grow ">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 md:gap-8 flex-grow ">
             {menuItems.map((item, index) => (
               <div key={index} className="md:flex justify-center items-center max-sm:w-full rounded-lg gap-2 overflow-hidden p-5 shadow-lg cursor-pointer hover:bg-zinc-900">
                 <Image src={item.image} alt={item.name} width={110} height={100} className="object-cover w-[110px] h-[100px] mx-auto" />
