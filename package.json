@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "rmdir /s /q .next && rmdir /s /q node_modules && npm install"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.4",
