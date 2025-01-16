@@ -9,36 +9,6 @@ import coffee from "../../../public/Coffee.png";
 import person from "../../../public/Person.png";
 import Link from "next/link";
 import { CiPlay1 } from "react-icons/ci";
-import { Card } from "@/components/ui/card";
-import review1 from "../../../public/Reviewslider1.png";
-import review2 from "../../../public/Reviwslider2.png";
-import review3 from "../../../public/Reviewslider3.png";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
-
-const testimonials = [
-  {
-    id: 1,
-    image: review1,
-    width: 200,
-    hieght: 200
-  },
-  {
-    id: 2,
-    image: review2,
-    width: 300,
-    hieght: 300
-  },
-  {
-    id: 3,
-    image: review3,
-    width: 300,
-    hieght: 300
-  },
-];
 
 const links = [
   { name: "Breakfast" },
