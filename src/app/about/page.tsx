@@ -165,61 +165,6 @@ export default function About() {
         height={480}
       />
 
-      {/* Testimonials Section */}
-      <section className="px-5 md:px-[135px] py-[120px] bg-white">
-        {/* Section Heading */}
-        <div className="text-center mb-10">
-          <h2 className="text-[#FF9F0D] font-great text-[20px] md:text-[32px]">
-            Testimonials
-          </h2>
-          <h2 className="font-bold text-[25px] md:text-[48px]">
-            What our clients are saying
-          </h2>
-        </div>
-
-        {/* Carousel */}
-        <Carousel className="w-full max-w-4xl mx-auto">
-          <CarouselContent className="carousel-content">
-            {testimonials.map((testimonial) => (
-              <CarouselItem key={testimonial.id} className="carousel-item p-4">
-                <Card className="border-2 rounded-lg overflow-hidden">
-                  {/* Client Image */}
-                  <Image
-                    className="w-full h-64 object-cover"
-                    src={testimonial.image}
-                    alt={"Reviews"}
-                    width={testimonial.width}
-                    height={testimonial.hieght}
-                    layout="responsive"
-                  />
-                </Card>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-
-          {/* Dots Pagination */}
-          <div className="flex justify-center space-x-2">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                className={`w-3 h-3 rounded-full transition-all ${index === 0
-                  ? "bg-[#FF9F0D]"
-                  : "bg-gray-300 hover:bg-[#FF9F0D]"
-                  }`}
-                onClick={() => {
-                  // Add logic to navigate to the corresponding slide
-                  document.querySelector(`.carousel-item:nth-child(${index + 1})`)?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "start",
-                  });
-                }}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
-        </Carousel>
-      </section>
       <section className="w-full max-w-7xl mx-auto flex flex-col mb-20 items-center justify-center space-y-7">
         <div className="space-y-3">
           <h1 className="helvetica font-bold text-5xl text-black text-center">Our Food Menu</h1>
