@@ -15,7 +15,6 @@ import { urlFor } from "@/sanity/lib/image";
 
 
 const Shop = () => {
-  const revalidate = 10;
   const query = `*[_type == "food" && available == true] {
   name,
   price,
@@ -24,14 +23,30 @@ const Shop = () => {
 }`;
 
   const [data, setData] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await client.fetch(query);
-      setData(result);
+    try {
+        setIsLoading(true)
+        const result = await client.fetch(query);
+        setData(result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+      fetchData();
     };
-    fetchData();
   }, []);
+
+  if (isLoading) {
+    return <div className="max-w-6xl h-screen mx-auto px-4 py-8">Loading...</div>;
+  }
+
+  if (!data || data.length === 0) {
+    return <div className="max-w-6xl mx-auto px-4 py-8">No products found</div>;
+  }
 
   console.log(data);
 
