@@ -11,11 +11,13 @@ import RestaurantActive from "./components/RestaurantActive";
 import Blog from "./components/Blog";
 import Testimonials from "./components/Testimonials";
 import ExtraTaste from './components/ExtraTaste';
+import MainNav from "./components/MainNav";
 
 
 function page() {
   return (
     <>
+      <MainNav />
       <Hero />
       <AbountUs />
       <FoodCategory />

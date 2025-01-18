@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Sidebar from "../components/Sidebar";
@@ -9,22 +9,31 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-
-
-const products = [
-  { id: 1, name: 'Fresh Lime', price: 45.00, category: 'Drinks', image: '/about3 copy.png', width: 312, height: 267 },
-  { id: 2, name: 'Chocolate Muffin', price: 12.00, category: 'Desserts', image: '/about3.1 copy.png', width: 312, height: 267 },
-  { id: 3, name: 'Burger', price: 45.00, category: 'Burger', image: '/maincourse.png', width: 312, height: 267 },
-  { id: 4, name: 'Country Burger', price: 45.00, category: 'Burger', image: '/about3.2 copy.png', width: 312, height: 267 },
-  { id: 5, name: 'Drink', price: 45.00, category: 'Drinks', image: '/drink.png', width: 312, height: 267 },
-  { id: 6, name: 'Pizza', price: 45.00, category: 'Pizza', image: '/about3.3 copy.png', width: 312, height: 267 },
-  { id: 7, name: 'Cheese Butter', price: 45.00, category: 'Sides', image: '/about3.4 copy.png', width: 312, height: 267 },
-  { id: 8, name: 'Sandwiches', price: 45.00, category: 'Sandwiches', image: '/about3.5 copy.png', width: 312, height: 267 },
-  { id: 9, name: 'Chicken Chop', price: 45.00, category: 'Chicken', image: '/about3.6 copy.png', width: 312, height: 267 }
-];
+import { client } from "@/sanity/lib/client";
+import { Product } from "@/types/types";
+import { urlFor } from "@/sanity/lib/image";
 
 
 const Shop = () => {
+  const revalidate = 10;
+  const query = `*[_type == "food" && available == true] {
+  name,
+  price,
+  category,
+  image
+}`;
+
+  const [data, setData] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await client.fetch(query);
+      setData(result);
+    };
+    fetchData();
+  }, []);
+
+  console.log(data);
 
   return (
     <div>
@@ -64,26 +73,26 @@ const Shop = () => {
 
             {/* Products Grid */}
             <div className="grid mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.map((product, i) => (
+              {data.map((data: Product, i: number) => (
                 <div key={i} className="group">
                   <Link href={"/shopdetails"}>
-                  <div className="relative overflow-hidden rounded-lg">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      width={product.width}
-                      height={product.height}
-                      className="w-full h-48 object-cover transition-transform group-hover:scale-110"
-                    />
-                    <div className="absolute top-2 right-2">
-                      <span className="bg-orange-500 text-white px-2 py-1 rounded-full text-sm">New</span>
+                    <div className="relative overflow-hidden rounded-lg">
+                      <Image
+                        src={urlFor(data.image).url()}
+                        alt={data.name}
+                        width={300}
+                        height={200}
+                        className="w-full h-48 object-cover transition-transform group-hover:scale-110"
+                      />
+                      <div className="absolute top-2 right-2">
+                        <span className="bg-orange-500 text-white px-2 py-1 rounded-full text-sm">New</span>
+                      </div>
                     </div>
-                  </div>
-                  <div className="mt-3">
-                    <h3 className="font-medium">{product.name}</h3>
-                    <p className="text-orange-500">${product.price.toFixed(2)}</p>
-                  </div>
-                    </Link>
+                    <div className="mt-3">
+                      <h3 className="font-medium">{data.name}</h3>
+                      <p className="text-orange-500">${data.price.toFixed(2)}</p>
+                    </div>
+                  </Link>
                 </div>
               ))}
             </div>

@@ -1,132 +1,230 @@
 "use client"
-import React, { useState } from 'react';
-import { Star, Share2, Heart, ShoppingCart } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Share2, Heart, ShoppingCart, ShoppingBag, Plus, Minus } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { StarRating } from '../components/StarRating';
+import { useCart } from '../components/CartContext';
+import { Product } from '@/types/types';
+import { client } from '@/sanity/lib/client';
+import { urlFor } from '@/sanity/lib/image';
 
 const ProductDetail = () => {
-  const [selectedImage, setSelectedImage] = useState(0);
+  const query = `*[_type == "food" && available == true] {
+    _id,
+    name,
+    price,
+    description,
+    "image": [image, image2, image3, image4],
+    category,
+    available,
+    originalPrice,
+    tags
+  }`;
+
+  const [product, setProduct] = useState<Product | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState('description');
-
-  const productImages = [
-    `/about3.1 copy.png`,
-    `/about3.2 copy.png`,
-    `/about3.3 copy.png`,
-    `/about3.4 copy.png`
-  ];
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const { addToCart } = useCart();
 
   const similarProducts = [
-    { 
-      id: 1, 
-      name: 'Fresh Lime', 
-      price: 45.00, 
-      rating: 4, 
+    {
+      id: 1,
+      name: 'Fresh Lime',
+      price: 45.00,
+      rating: 4,
       image: `/about3 copy.png`
     },
-    { 
-      id: 2, 
-      name: 'Chocolate Muffin', 
-      price: 35.00, 
-      rating: 4, 
+    {
+      id: 2,
+      name: 'Chocolate Muffin',
+      price: 35.00,
+      rating: 4,
       image: `/about3.1 copy.png`
     },
-    { 
-      id: 3, 
-      name: 'Burger', 
-      price: 25.00, 
-      rating: 5, 
+    {
+      id: 3,
+      name: 'Burger',
+      price: 25.00,
+      rating: 5,
       image: `/about3.2 copy.png`
     },
-    { 
-      id: 4, 
-      name: 'Fresh Lime', 
-      price: 45.00, 
-      rating: 4, 
+    {
+      id: 4,
+      name: 'Fresh Lime',
+      price: 45.00,
+      rating: 4,
       image: `/about3 copy.png`
     }
   ];
 
-  const StarRating = ({ rating, reviews = 0 }: { rating: number; reviews?: number }) => (
-    <div className="flex items-center space-x-1">
-      {[1, 2, 3, 4, 5].map((star) => (
-        <Star
-          key={star}
-          size={16}
-          className={`${star <= rating ? 'fill-orange-400 text-orange-400' : 'fill-gray-200 text-gray-200'}`}
-        />
-      ))}
-      {reviews > 0 && <span className="text-sm text-gray-500">({reviews} Reviews)</span>}
-    </div>
-  );
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        const result = await client.fetch(query);
+        setProduct(result[0] || null);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleAddToCart = () => {
+    if (product) {
+      addToCart({
+        _id: product._id,
+        name: product.name,
+        price: product.price,
+        image: [product.image[0]],
+        quantity,
+        description: product.description,
+        category: product.category,
+        available: product.available,
+        tags: product.tags,
+        originalPrice: product.originalPrice,
+      }, quantity);
+      setIsPopoverOpen(true);
+    }
+  };
+
+  if (isLoading) {
+    return <div className="max-w-6xl h-screen mx-auto px-4 py-8">Loading...</div>;
+  }
+
+  if (!product) {
+    return <div className="max-w-6xl mx-auto px-4 py-8">No product found</div>;
+  }
+
+  const validImage = product.image.filter(img => img);
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         {/* Image Gallery */}
         <div className="space-y-4">
-          <div className="w-full h-[500px] rounded-lg overflow-hidden">
-            <Image
-              src={productImages[selectedImage]}
-              alt="Yummy Chicken Chup"
-              width={500}
-              height={500}
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="grid grid-cols-4 gap-4">
-            {productImages.map((image, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedImage(index)}
-                className={`w-full h-24 rounded-lg overflow-hidden border-2 ${
-                  selectedImage === index ? 'border-orange-500' : 'border-transparent'
-                }`}
-              >
-                <Image 
-                  src={image} 
-                  alt={`Product ${index + 1}`} 
-                  width={100} 
-                  height={100} 
-                  className="w-full h-full object-cover" 
+          <div className="w-full h-[500px] rounded-lg overflow-hidden bg-gray-100">
+            {validImage.length > 0 ? (
+              validImage[selectedImageIndex] ? (
+                <Image
+                  src={urlFor(validImage[selectedImageIndex]).url()}
+                  alt={`${product.name} - Image ${selectedImageIndex + 1}`}
+                  width={500}
+                  height={500}
+                  className="w-full h-full object-cover"
                 />
-              </button>
-            ))}
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-gray-500">
+                  Image not available
+                </div>
+              )
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-gray-500">
+                No image available
+              </div>
+            )}
           </div>
+
+          {validImage.length > 0 && (
+            <div className="grid grid-cols-4 gap-4">
+              {validImage.map((image, index) => (
+                image && (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedImageIndex(index)}
+                    className={`w-full h-24 rounded-lg overflow-hidden border-2 
+                      ${selectedImageIndex === index ? 'border-orange-500' : 'border-transparent'}`}
+                  >
+                    <Image
+                      src={urlFor(image).url()}
+                      alt={`${product.name} - Thumbnail ${index + 1}`}
+                      width={100}
+                      height={100}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                )
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Product Info */}
         <div>
-          <span className="inline-block bg-orange-500 text-white px-2 py-1 rounded text-sm mb-4">New</span>
-          <h1 className="text-3xl font-semibold mb-4">Yummy Chicken Chup</h1>
+          <span className="inline-block bg-orange-500 text-white px-2 py-1 rounded text-sm mb-4">
+            New
+          </span>
+          <h1 className="text-3xl font-semibold mb-4">{product.name}</h1>
           <div className="flex items-center space-x-4 mb-6">
-            <StarRating rating={4} reviews={12} />
-            <span className="text-2xl font-semibold">${(54.00).toFixed(2)}</span>
+            <span className="flex space-y-2 gap-2 text-2xl font-semibold">
+              {product.price.toFixed(2)}
+              <del className='text-red-500 text-xl'>${product.originalPrice}</del>
+            </span>
+              <StarRating rating={4} reviews={12} />
           </div>
-
-          <p className="text-gray-600 mb-6">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur diam massa, consequat a tellus sed.
-          </p>
+          <p className="text-gray-600 mb-6">{product.description}</p>
 
           <div className="flex items-center space-x-4 mb-6">
             <div className="flex items-center border rounded">
-              <button 
+              <button
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
                 className="px-4 py-2 border-r"
               >
-                -
+                <Minus size={16} />
               </button>
               <span className="px-4 py-2">{quantity}</span>
-              <button 
+              <button
                 onClick={() => setQuantity(quantity + 1)}
                 className="px-4 py-2 border-l"
               >
-                +
+                <Plus size={16} />
               </button>
             </div>
-            <button className="bg-orange-500 text-white px-6 py-2 rounded flex items-center space-x-2">
-              <ShoppingCart size={20} />
-              <span>Add to Cart</span>
-            </button>
+            <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
+              <PopoverTrigger asChild>
+                <button
+                  onClick={handleAddToCart}
+                  className="bg-orange-500 text-white px-6 py-2 rounded flex items-center space-x-2 hover:bg-orange-600 transition-colors"
+                >
+                  <ShoppingCart size={20} />
+                  <span>Add to Cart</span>
+                </button>
+              </PopoverTrigger>
+              <PopoverContent className="w-80">
+                <div className="grid gap-4">
+                  <div className="flex items-center space-x-4">
+                    <ShoppingBag className="text-green-500" />
+                    <div className="grid gap-1">
+                      <h4 className="font-semibold">Added to Cart!</h4>
+                      <p className="text-sm text-gray-500">
+                        {quantity} x {product.name}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Link
+                      href="/cart"
+                      className="flex-1 bg-orange-500 text-white px-4 py-2 rounded text-center hover:bg-orange-600 transition-colors"
+                    >
+                      Go to Checkout
+                    </Link>
+                    <button
+                      onClick={() => setIsPopoverOpen(false)}
+                      className="flex-1 bg-gray-100 text-gray-700 px-4 py-2 rounded hover:bg-gray-200 transition-colors"
+                    >
+                      Keep Shopping
+                    </button>
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
           </div>
 
           <div className="border-t pt-4">
@@ -140,17 +238,8 @@ const ProductDetail = () => {
                 <span>Compare</span>
               </button>
             </div>
-            <p className="text-gray-600">Category: Pizza</p>
-            <p className="text-gray-600">Tag: Off 10%</p>
-            <div className="flex items-center space-x-2 mt-2">
-              <span>Share:</span>
-              {['facebook', 'twitter', 'instagram', 'pinterest'].map((social) => (
-                <button 
-                  key={social} 
-                  className="w-8 h-8 rounded-full bg-gray-200 hover:bg-orange-500 transition-colors"
-                />
-              ))}
-            </div>
+            <p className="text-gray-600">Category: {product.category}</p>
+            <p className="text-gray-600">Tag: {product.tags}</p>
           </div>
         </div>
       </div>
@@ -161,11 +250,8 @@ const ProductDetail = () => {
           <div className="flex space-x-8">
             <button
               onClick={() => setActiveTab('description')}
-              className={`py-4 relative ${
-                activeTab === 'description' 
-                  ? 'text-orange-500' 
-                  : 'text-gray-600'
-              }`}
+              className={`py-4 relative ${activeTab === 'description' ? 'text-orange-500' : 'text-gray-600'
+                }`}
             >
               Description
               {activeTab === 'description' && (
@@ -174,11 +260,8 @@ const ProductDetail = () => {
             </button>
             <button
               onClick={() => setActiveTab('reviews')}
-              className={`py-4 relative ${
-                activeTab === 'reviews' 
-                  ? 'text-orange-500' 
-                  : 'text-gray-600'
-              }`}
+              className={`py-4 relative ${activeTab === 'reviews' ? 'text-orange-500' : 'text-gray-600'
+                }`}
             >
               Reviews (12)
               {activeTab === 'reviews' && (
@@ -187,25 +270,22 @@ const ProductDetail = () => {
             </button>
           </div>
         </div>
-        
+
         <div className="py-8">
           {activeTab === 'description' ? (
             <div className="space-y-6">
               <div>
                 <h3 className="font-semibold mb-2">Description</h3>
-                <p className="text-gray-600">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur diam massa, consequat a tellus sed, interdum luctus urna. Vestibulum magna varius justo. Id fermentum velit felis ac tempor.
-                </p>
+                <p className="text-gray-600">{product.description}</p>
               </div>
-              
               <div>
-                <h3 className="font-semibold mb-2">Key Words</h3>
+                <h3 className="font-semibold mb-2">Key Features</h3>
                 <ul className="list-disc pl-6 space-y-1 text-gray-600">
-                  <li>Lorem ipsum dolor sit amet, ut lacus a urna tellus rhoncus eu</li>
-                  <li>Nam ac mi rutrum ex at tincidunt nulla sit amet dictum ante</li>
-                  <li>Curabitur nec eros nibh, a lobortis eros et massa semper congue</li>
-                  <li>Etiam non maurci ac tellus facilisis rhoncus</li>
-                  <li>Nam a velit ante magna sit tempus</li>
+                  <li>Fresh ingredients daily</li>
+                  <li>Prepared by expert chefs</li>
+                  <li>Available for delivery</li>
+                  <li>Customizable options</li>
+                  <li>Perfect for sharing</li>
                 </ul>
               </div>
             </div>

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { CiSearch } from "react-icons/ci";
 import { IoBagHandle } from "react-icons/io5";
-import { HiMenuAlt3,  } from "react-icons/hi";
+import { HiMenuAlt3 } from "react-icons/hi";
 import LoadingBar from "react-top-loading-bar";
 import { usePathname } from "next/navigation";
 import {
@@ -15,8 +15,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import Header from "./Header";
 
-export default function Navbar() {
+export default function MainNav() {
   const [activeSection, setActiveSection] = useState("");
   const [progress, setProgress] = useState(0);
   const pathname = usePathname();
@@ -66,7 +67,8 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-black text-white p-4 w-full">
+    <nav className="bg-black text-white p-4 w-full absolute z-50 top-0">
+      <Header />
       <LoadingBar color="#FF9F0D" progress={progress} onLoaderFinished={() => setProgress(0)} />
       <section className="flex items-center justify-between px-4 lg:px-[135px]">
         {/* Logo */}
@@ -111,11 +113,6 @@ export default function Navbar() {
         </Sheet>
         </div>
         {/* Desktop Navigation */}
-        <div className="text-2xl font-bold hidden md:flex">
-          <Link href="/" aria-label="Navigate to Home">
-            <span className="text-[#FF9F0D]">Food</span>tuck
-          </Link>
-        </div>
         <div className="hidden md:flex items-center space-x-6 text-sm">
           {Object.entries(routes).map(([label, path]) => (
             <Link
