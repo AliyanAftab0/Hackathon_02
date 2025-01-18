@@ -1,4 +1,6 @@
 {
   "extends": "next/core-web-vitals",
-  "eslintimport/no-anonymous-default-export": "off"
+  "rules": {
+    "eslintimport/no-anonymous-default-export": "off"
+  }
 }
