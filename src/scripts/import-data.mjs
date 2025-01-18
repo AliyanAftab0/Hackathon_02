@@ -18,7 +18,7 @@ const client = createClient({
   apiVersion: '2021-08-31',
 });
 
-async function uploadImageToSanity(imageUrl: any) {
+async function uploadImageToSanity(imageUrl) {
   try {
     console.log(`Uploading image: ${imageUrl}`);
     const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });

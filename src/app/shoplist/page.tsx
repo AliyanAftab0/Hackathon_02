@@ -27,8 +27,8 @@ const Shop = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-    try {
-        setIsLoading(true)
+      try {
+        setIsLoading(true);
         const result = await client.fetch(query);
         setData(result);
       } catch (error) {
@@ -36,16 +36,12 @@ const Shop = () => {
       } finally {
         setIsLoading(false);
       }
-      fetchData();
     };
+    fetchData();
   }, []);
 
   if (isLoading) {
-    return <div className="max-w-6xl h-screen mx-auto px-4 py-8">Loading...</div>;
-  }
-
-  if (!data || data.length === 0) {
-    return <div className="max-w-6xl mx-auto px-4 py-8">No products found</div>;
+    return <div>Loading...</div>;
   }
 
   console.log(data);
