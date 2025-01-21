@@ -9,10 +9,6 @@ import blog2 from "../../../public/blog2.png";
 import blog3 from "../../../public/blog3.png";
 import blog4 from "../../../public/blog4.png";
 
-import cmt1 from "../../../public/cmt1.png";
-import cmt2 from "../../../public/cmt2.png";
-import cmt3 from "../../../public/cmd3.png";
-
 const BlogPage = () => {
     return (
         <>

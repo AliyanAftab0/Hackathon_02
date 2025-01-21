@@ -1,10 +1,16 @@
 'use client';
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Product } from '@/types/types';
+import { Product as BaseProduct } from '@/types/types';
+
+// Ensure BaseProduct does not have a conflicting quantity property
+// Extend the Product type to include a quantity property of type number
+type Product = Omit<BaseProduct, 'quantity'> & {
+  quantity: number;
+};
 
 type CartContextType = {
   cart: Product[];
-  addToCart: (product: Product, quantity: number) => void;
+  addToCart: (product: BaseProduct, quantity: number) => void;
   removeFromCart: (productId: number) => void;
   updateQuantity: (productId: number, quantity: number) => void;
   getCartTotal: () => number;
@@ -35,7 +41,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }
   }, [cart, isInitialized]);
 
-  const addToCart = (product: Product, quantity: number) => {
+  const addToCart = (product: BaseProduct, quantity: number) => {
     setCart(prevCart => {
       const existingItem = prevCart.find(item => item._id === product._id);
       if (existingItem) {

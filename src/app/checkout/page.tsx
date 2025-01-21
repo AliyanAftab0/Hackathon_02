@@ -2,8 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useCart } from '../components/CartContext';
-import { urlFor } from "@/sanity/lib/image";
+import { useCart } from '.././components/CartContext';
 import { ShoppingBag } from "lucide-react";
 
 export default function CheckoutPage() {
@@ -122,10 +121,7 @@ export default function CheckoutPage() {
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                   Email address
                 </label>
                 <input
@@ -138,10 +134,7 @@ export default function CheckoutPage() {
                 />
               </div>
               <div>
-                <label
-                  htmlFor="phone"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
                   Phone number
                 </label>
                 <input
@@ -157,26 +150,19 @@ export default function CheckoutPage() {
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
-                <label
-                  htmlFor="company"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
+                <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
                   Company
                 </label>
                 <input
                   type="text"
                   id="company"
-                  required
                   value={formData.company}
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                 />
               </div>
               <div>
-                <label
-                  htmlFor="country"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
+                <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-1">
                   Country
                 </label>
                 <select
@@ -193,10 +179,7 @@ export default function CheckoutPage() {
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
-                <label
-                  htmlFor="city"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
+                <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-1">
                   City
                 </label>
                 <input
@@ -206,14 +189,10 @@ export default function CheckoutPage() {
                   value={formData.city}
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                  placeholder="Choose city"
                 />
               </div>
               <div>
-                <label
-                  htmlFor="zipCode"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
+                <label htmlFor="zipCode" className="block text-sm font-medium text-gray-700 mb-1">
                   Zip code
                 </label>
                 <input
@@ -228,10 +207,7 @@ export default function CheckoutPage() {
             </div>
 
             <div>
-              <label
-                htmlFor="address1"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
+              <label htmlFor="address1" className="block text-sm font-medium text-gray-700 mb-1">
                 Address 1
               </label>
               <input
@@ -245,16 +221,12 @@ export default function CheckoutPage() {
             </div>
 
             <div>
-              <label
-                htmlFor="address2"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
+              <label htmlFor="address2" className="block text-sm font-medium text-gray-700 mb-1">
                 Address 2
               </label>
               <input
                 type="text"
                 id="address2"
-                required
                 value={formData.address2}
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
@@ -281,15 +253,16 @@ export default function CheckoutPage() {
             <div className="bg-white p-6 rounded-lg shadow">
               <h2 className="text-2xl font-semibold mb-6">Order Summary</h2>
 
-              {/* Real-time Cart Items */}
+              {/* Cart Items */}
               <div className="space-y-4 mb-6">
                 {cart.map((item) => (
                   <div key={item._id} className="flex items-center space-x-4">
                     <div className="relative h-20 w-20 flex-shrink-0">
                       <Image
-                        src={urlFor(item.image[0]).url()}
+                        src={item.image || '/api/placeholder/80/80'}
+                        width={80}
+                        height={80}
                         alt={item.name}
-                        fill
                         className="rounded-md object-cover"
                       />
                     </div>
@@ -304,7 +277,7 @@ export default function CheckoutPage() {
                 ))}
               </div>
 
-              {/* Real-time Order Calculations */}
+              {/* Order Calculations */}
               <div className="space-y-2 border-t pt-4">
                 <div className="flex justify-between text-sm">
                   <span>Subtotal</span>
@@ -337,14 +310,16 @@ export default function CheckoutPage() {
               >
                 Back to Cart
               </Link>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`flex-1 px-6 py-3 bg-orange-500 text-white rounded-md shadow-sm hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
-                  }`}
-              >
-                {isSubmitting ? 'Processing...' : 'Place Order'}
-              </button>
+              <Link href={"/orderComplete"}>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`flex-1 px-6 py-3 bg-orange-500 text-white rounded-md shadow-sm hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
+                    }`}
+                >
+                  {isSubmitting ? 'Processing...' : 'Place Order'}
+                </button>
+              </Link>
             </div>
           </div>
         </form>

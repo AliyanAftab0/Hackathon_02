@@ -3,7 +3,7 @@ import React from 'react';
 import { ShoppingCart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useCart } from '../components/CartContext';
+import { useCart } from '.././components/CartContext';
 import { urlFor } from '@/sanity/lib/image';
 
 const CartPage = () => {

@@ -11,7 +11,7 @@ function Hero() {
     <section className="bg-black px-3 md:px-10 lg:px-[135px] flex flex-col justify-evenly xl:flex-row lg:items-center py-[50px]">
       {/* Heading */}
       <div className="flex items-center">
-      <div className="hidden lg:flex flex-col items-center space-y-4 mx-10">
+      <div className="hidden xl:flex flex-col items-center space-y-4 mx-10">
         <div className="w-px h-[158px] bg-white"></div>
         <Link href="https://facebook.com" target="_blank">
           <FaFacebookF className="text-white hover:text-[#FF9F0D] transition duration-300" size={20} />

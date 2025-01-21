@@ -1,12 +1,13 @@
 export interface Product {
   _id: number;
+  slug: string;
   name: string;
+  category: string;
   price: number;
   originalPrice: number;
-  description: string;
-  image: any[];
-  category: string;
-  available: boolean;
-  quantity: number;
   tags: string[];
+  image: string;
+  description: string;
+  quantity: string;
+  available: boolean;
 }

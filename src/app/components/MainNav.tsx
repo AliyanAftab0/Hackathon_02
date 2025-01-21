@@ -16,6 +16,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Header from "./Header";
+import { Heart } from "lucide-react";
 
 export default function MainNav() {
   const [activeSection, setActiveSection] = useState("");
@@ -80,37 +81,37 @@ export default function MainNav() {
 
         {/* Hamburger Menu */}
         <div className="flex gap-2 md:hidden">
-        <Link href="/cart" aria-label="View cart">
-          <IoBagHandle className="w-6 h-6 cursor-pointer" />
-        </Link>
-        <Sheet>
-          <SheetTrigger asChild>
-            <div
-              className="text-[#FF9F0D] md:hidden cursor-pointer"
-              aria-label="Open menu"
-              aria-expanded="false"
-            >
-              <HiMenuAlt3 className="w-6 h-6" />
-            </div>
-          </SheetTrigger>
-          <SheetContent side="bottom" className="p-6 bg-black text-white">
-            <SheetHeader>
-            </SheetHeader>
-            <div className="flex flex-col space-y-6 mt-4">
-              {Object.entries(routes).map(([label, path]) => (
-                <Link
-                  key={label}
-                  href={path}
-                  onClick={() => handleLinkClick(label.toLowerCase())}
-                  className={`block text-center py-3 text-lg ${activeSection === label.toLowerCase() ? "text-[#FF9F0D]" : ""
-                    } hover:text-[#FF9F0D] transition-all duration-200`}
-                >
-                  {label}
-                </Link>
-              ))}
-            </div>
-          </SheetContent>
-        </Sheet>
+          <Link href="/cart" aria-label="View cart">
+            <IoBagHandle className="w-6 h-6 cursor-pointer" />
+          </Link>
+          <Sheet>
+            <SheetTrigger asChild>
+              <div
+                className="text-[#FF9F0D] md:hidden cursor-pointer"
+                aria-label="Open menu"
+                aria-expanded="false"
+              >
+                <HiMenuAlt3 className="w-6 h-6" />
+              </div>
+            </SheetTrigger>
+            <SheetContent side="bottom" className="p-6 bg-black text-white">
+              <SheetHeader>
+              </SheetHeader>
+              <div className="flex flex-col space-y-6 mt-4">
+                {Object.entries(routes).map(([label, path]) => (
+                  <Link
+                    key={label}
+                    href={path}
+                    onClick={() => handleLinkClick(label.toLowerCase())}
+                    className={`block text-center py-3 text-lg ${activeSection === label.toLowerCase() ? "text-[#FF9F0D]" : ""
+                      } hover:text-[#FF9F0D] transition-all duration-200`}
+                  >
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6 text-sm">
@@ -150,6 +151,7 @@ export default function MainNav() {
           <Link href="/cart" aria-label="View cart">
             <IoBagHandle className="w-6 h-6 cursor-pointer" />
           </Link>
+          <Link href={"/wishlist"}><Heart /></Link>
         </div>
       </section>
     </nav>
