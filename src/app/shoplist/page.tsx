@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
-const categories = ["All Categories", "Sandwiche", "Dessert", "Main Course", "Drink", "Appetizer"];
+const categories = ["All Categories", "Sandwich", "Dessert", "Main Course", "Drink", "Appetizer"];
 
 const Shop = () => {
   const [products, setProducts] = useState<Product[]>([]);
