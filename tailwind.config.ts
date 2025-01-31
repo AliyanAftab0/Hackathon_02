@@ -30,7 +30,7 @@ const config: Config = {
   				foreground: 'hsl(var(--popover-foreground))'
   			},
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
+  				DEFAULT: 'bg-[#FF9F0D]',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
   			secondary: {

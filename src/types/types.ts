@@ -11,3 +11,13 @@ export interface Product {
   quantity: string;
   available: boolean;
 }
+
+export interface Review {
+  _id: string;
+  rating: number;
+  comment: string;
+  user: {
+    name: string;
+  };
+  _createdAt: string;
+}

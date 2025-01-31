@@ -9,7 +9,7 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
-    <div className="border rounded-lg overflow-hidden shadow-sm transition-transform hover:scale-105">
+    <div className="border w-[300px] sm:w-full rounded-lg overflow-hidden shadow-sm transition-transform hover:scale-105">
       {/* Product Image */}
       <Link href={`/shoplist/${product.slug}`}>
         <div className="w-full h-[200px] relative">
@@ -19,13 +19,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             fill
             className="object-cover"
           />
-          {product.tags.includes('New') && (
-            <div className="absolute top-2 right-2 z-30">
-              <span className="bg-orange-500 text-white px-2 py-1 rounded-full text-sm">
-                New
-              </span>
-            </div>
-          )}
         </div>
       </Link>
 

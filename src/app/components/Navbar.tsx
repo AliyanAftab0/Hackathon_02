@@ -15,6 +15,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Heart } from "lucide-react";
+import { UserButton } from "@clerk/nextjs";
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("");
@@ -79,6 +80,10 @@ export default function Navbar() {
 
         {/* Hamburger Menu */}
         <div className="flex gap-2 lg:hidden">
+          <Link href="/cart" aria-label="View cart">
+            <IoBagHandle className="w-6 h-6 cursor-pointer" />
+          </Link>
+          <Link href={"/wishlist"}><Heart /></Link>
           <Sheet>
             <SheetTrigger asChild>
               <div
@@ -107,6 +112,7 @@ export default function Navbar() {
               </div>
             </SheetContent>
           </Sheet>
+          <UserButton />
         </div>
         {/* Desktop Navigation */}
         <div className="text-2xl font-bold hidden md:flex">
@@ -129,14 +135,11 @@ export default function Navbar() {
 
         {/* Search and Cart */}
         <div className="hidden md:flex items-center space-x-4">
-          <form
-            className="relative"
-          >
-          </form>
           <Link href="/cart" aria-label="View cart">
             <IoBagHandle className="w-6 h-6 cursor-pointer" />
           </Link>
           <Link href={"/wishlist"}><Heart /></Link>
+        <UserButton />
         </div>
       </section>
     </nav>

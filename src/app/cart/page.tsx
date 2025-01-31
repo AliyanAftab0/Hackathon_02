@@ -22,9 +22,9 @@ const CartPage = () => {
 
   if (!cart || cart.length === 0) {
     return (
-      <div className="text-center py-8">
-        <ShoppingCart size={48} className="mx-auto mb-4 text-gray-400" />
-        <h2 className="text-xl font-semibold mb-2">Your cart is empty</h2>
+      <div className="text-center py-8 h-screen flex flex-col items-center justify-center">
+        <ShoppingCart size={70} className="mx-auto mb-4 text-gray-400" />
+        <h2 className="text-2xl font-semibold mb-2">Your cart is empty</h2>
         <p className="text-gray-600 mb-4">Looks like you haven&apos;t added any items to your cart yet.</p>
         <Link 
           href="/shoplist" 

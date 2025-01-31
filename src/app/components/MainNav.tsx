@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/sheet";
 import Header from "./Header";
 import { Heart } from "lucide-react";
+import { UserButton } from "@clerk/nextjs";
 
 export default function MainNav() {
   const [activeSection, setActiveSection] = useState("");
@@ -152,6 +153,7 @@ export default function MainNav() {
             <IoBagHandle className="w-6 h-6 cursor-pointer" />
           </Link>
           <Link href={"/wishlist"}><Heart /></Link>
+          <UserButton />
         </div>
       </section>
     </nav>
